@@ -1,0 +1,36 @@
+{
+  "hotel_id": "h004",
+  "slug": "updated-hotel-4",
+  "images": [
+    "https://example.com/hotel4/image1.jpg",
+    "https://example.com/hotel4/image2.jpg"
+  ],
+  "title": "Updated Hotel Four aa",
+  "description": "An oasis in the desert with unique architecture and serene landscapes.",
+  "guest_count": 3,
+  "bedroom_count": 1,
+  "bathroom_count": 1,
+  "amenities": [
+    "Pool",
+    "Free Parking",
+    "Spa",
+    "Complimentary Breakfast"
+  ],
+  "host_information": {
+    "name": "Samantha Blake",
+    "contact": "+654321789",
+    "email": "samantha@example.com"
+  },
+  "address": "101 Sand Dunes Road, Phoenix, AZ",
+  "latitude": 33.4484,
+  "longitude": -112.074,
+  "rooms": [
+    {
+      "hotel_slug": "desert-escape",
+      "room_slug": "desert-suite",
+      "room_image": "https://example.com/hotel4/room1.jpg",
+      "room_title": "Desert Suite",
+      "bedroom_count": 1
+    }
+  ]
+}

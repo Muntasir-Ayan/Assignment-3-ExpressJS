@@ -1,0 +1,36 @@
+{
+  "hotel_id": "h006",
+  "slug": "forest-hideaway",
+  "images": [
+    "https://example.com/hotel6/image1.jpg",
+    "https://example.com/hotel6/image2.jpg"
+  ],
+  "title": "Forest Hideaway",
+  "description": "Nestled in a lush forest, this retreat offers peace and adventure alike.",
+  "guest_count": 4,
+  "bedroom_count": 2,
+  "bathroom_count": 1,
+  "amenities": [
+    "Hiking Trails",
+    "Free Breakfast",
+    "Pet Friendly",
+    "Campfire Area"
+  ],
+  "host_information": {
+    "name": "Alice Woods",
+    "contact": "+876543210",
+    "email": "alice@example.com"
+  },
+  "address": "789 Forest Path, Portland, OR",
+  "latitude": 45.5155,
+  "longitude": -122.6793,
+  "rooms": [
+    {
+      "hotel_slug": "forest-hideaway",
+      "room_slug": "cabin-suite",
+      "room_image": "https://example.com/hotel6/room1.jpg",
+      "room_title": "Cabin Suite",
+      "bedroom_count": 2
+    }
+  ]
+}

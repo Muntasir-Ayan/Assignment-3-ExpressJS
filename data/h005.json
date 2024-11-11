@@ -1,0 +1,36 @@
+{
+  "hotel_id": "h005",
+  "slug": "lakeside-inn",
+  "images": [
+    "https://example.com/hotel5/image1.jpg",
+    "https://example.com/hotel5/image2.jpg"
+  ],
+  "title": "Lakeside Inn",
+  "description": "A quaint inn by the lake, perfect for a peaceful getaway.",
+  "guest_count": 2,
+  "bedroom_count": 1,
+  "bathroom_count": 1,
+  "amenities": [
+    "Lake View",
+    "Free WiFi",
+    "Breakfast Available",
+    "Fire Pit"
+  ],
+  "host_information": {
+    "name": "Robert Stone",
+    "contact": "+321456987",
+    "email": "robert@example.com"
+  },
+  "address": "222 Lake Drive, Lake Tahoe, CA",
+  "latitude": 39.0968,
+  "longitude": -120.0324,
+  "rooms": [
+    {
+      "hotel_slug": "lakeside-inn",
+      "room_slug": "lake-view-room",
+      "room_image": "https://example.com/hotel5/room1.jpg",
+      "room_title": "Lake View Room",
+      "bedroom_count": 1
+    }
+  ]
+}
