@@ -2,11 +2,10 @@
   "hotel_id": "h004",
   "slug": "updated-hotel-4",
   "images": [
-    "https://example.com/hotel4/image1.jpg",
-    "https://example.com/hotel4/image2.jpg",
     "/uploads/1731390688840_Screenshot from 2024-11-08 18-41-24.png",
     "/uploads/1731390736572_Screenshot from 2024-11-08 18-41-24.png",
-    "/uploads/1731390736574_Screenshot from 2024-11-08 18-38-55.png"
+    "/uploads/1731390736574_Screenshot from 2024-11-08 18-38-55.png",
+    "/uploads/1731407833831_Screenshot from 2024-11-08 18-38-08.png"
   ],
   "title": "Updated Hotel Four aa",
   "description": "An oasis in the desert with unique architecture and serene landscapes.",

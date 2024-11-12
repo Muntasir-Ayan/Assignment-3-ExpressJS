@@ -1,0 +1,33 @@
+1. Add a New Hotel
+POST http://localhost:3000/hotel
+Headers: Content-Type: application/json
+Body (JSON):
+{
+  "hotel_id": "h004",
+  "slug": "hotel-4",
+  "title": "Hotel Four",
+  "images": []
+}
+
+
+2. Get a Hotel by ID or Slug
+
+    GET http://localhost:3000/hotel/h001
+    or http://localhost:3000/hotel/hotel-1
+
+3. Update a Hotel's Information by ID
+
+    PUT http://localhost:3000/hotel/h004
+    Headers: Content-Type: application/json
+    Body (JSON):
+
+    {
+    "title": "Updated Hotel Four",
+    "slug": "updated-hotel-4"
+    }
+
+4. Upload Multiple Images for a Specific Hotel
+
+    POST http://localhost:3000/images/h004
+    Headers: Content-Type: multipart/form-data
+

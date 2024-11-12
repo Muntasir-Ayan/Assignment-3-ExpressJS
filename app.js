@@ -7,20 +7,10 @@ const app = express();
 app.use(express.json());
 
 // Directory paths
-const dataFilePath = './data/data.json';
-const hotelDir = './data';
+const hotelDir = './data';  // Folder containing hotel JSON files
 const uploadsDir = './uploads';
 
-// Load main data array from data.json
-let hotels = require(dataFilePath);
-
-// Helper function to save main data array to data.json
-const saveMainData = () => {
-  // stringify(value, replacer, space) space gives a better view
-  fs.writeFileSync(dataFilePath, JSON.stringify(hotels, null, 2));
-};
-
-// Helper function to save each hotel to its own JSON file
+// Helper function to save individual hotel data to its own JSON file
 const saveHotelData = (hotel) => {
   const hotelFilePath = path.join(hotelDir, `${hotel.hotel_id}.json`);
   fs.writeFileSync(hotelFilePath, JSON.stringify(hotel, null, 2));
@@ -30,32 +20,24 @@ const saveHotelData = (hotel) => {
 const loadHotelData = (hotelId) => {
   const hotelFilePath = path.join(hotelDir, `${hotelId}.json`);
   if (fs.existsSync(hotelFilePath)) {
-    //fs.readFileSync(hotelFilePath, 'utf-8') return a string file and JSON.parse convert it into JSON format.
     return JSON.parse(fs.readFileSync(hotelFilePath, 'utf-8'));
   }
   return null;
 };
 
-// See all hotels
+// Helper function to get all hotel ids (get all hotel files in the directory)
+const getAllHotelIds = () => {
+  const files = fs.readdirSync(hotelDir);
+  return files
+    .filter(file => file.endsWith('.json') && file !== 'data.json')
+    .map(file => file.replace('.json', ''));
+};
+
+// Route: GET /hotels - List all hotels by their IDs
 app.get('/hotels', (req, res) => {
-  // Read the data file asynchronously
-  fs.readFile(dataFilePath, 'utf8', (err, data) => {
-    if (err) {
-      // Handle error if file reading fails
-      return res.status(500).json({ message: 'Failed to read data file', error: err });
-    }
-
-    try {
-      // Parse the JSON data and send it in the response
-      const hotels = JSON.parse(data);
-      res.status(200).json(hotels);
-    } catch (parseErr) {
-      // Handle error if JSON parsing fails
-      res.status(500).json({ message: 'Failed to parse data file', error: parseErr });
-    }
-  });
+  const hotelIds = getAllHotelIds();
+  res.status(200).json(hotelIds); // Return only hotel IDs to avoid loading all data
 });
-
 
 // Route: POST /hotel - Add a new hotel
 app.post('/hotel', (req, res) => {
@@ -67,20 +49,17 @@ app.post('/hotel', (req, res) => {
   }
 
   // Check for duplicate hotel ID
-  if (hotels.some(h => h.hotel_id === newHotel.hotel_id)) {
+  if (fs.existsSync(path.join(hotelDir, `${newHotel.hotel_id}.json`))) {
     return res.status(400).json({ error: 'Hotel ID already exists' });
   }
 
   // Save new hotel data
-  hotels.push(newHotel);
-  saveMainData();
   saveHotelData(newHotel);
 
   res.status(201).json(newHotel);
 });
 
 // Configure multer for image upload
-//multer.diskStorage(destination,filename) helps to difine the location
 const storage = multer.diskStorage({
   destination: uploadsDir,
   filename: (req, file, cb) => {
@@ -100,22 +79,23 @@ app.post('/images/:hotelId', upload.array('images', 10), (req, res) => {
   // Add new image URLs to the hotel data
   req.files.forEach((file) => {
     const imageUrl = `/uploads/${file.filename}`;
+    if (!hotel.images) {
+      console.log("enter here")
+      hotel.images = [];
+    }
     hotel.images.push(imageUrl);
   });
 
-  // Update data files
-  const hotelIndex = hotels.findIndex((h) => h.hotel_id === hotelId);
-  hotels[hotelIndex] = hotel;
-  saveMainData();
+  // Save updated hotel data
   saveHotelData(hotel);
 
   res.status(200).json(hotel);
 });
 
-// Route: GET /hotel/:hotelId - Retrieve a hotel by ID or slug
+// Route: GET /hotel/:hotelId - Retrieve a hotel by ID
 app.get('/hotel/:hotelId', (req, res) => {
   const hotelId = req.params.hotelId;
-  const hotel = hotels.find((h) => h.hotel_id === hotelId || h.slug === hotelId);
+  const hotel = loadHotelData(hotelId);
 
   if (!hotel) return res.status(404).json({ error: 'Hotel not found' });
 
@@ -131,20 +111,13 @@ app.put('/hotel/:hotelId', (req, res) => {
   if (!hotel) return res.status(404).json({ error: 'Hotel not found' });
 
   // Update hotel data
-   //creates two object existing hotel data and updated hotel data to merge
-  const updatedHotel = { ...hotel, ...updatedData }; 
-  const hotelIndex = hotels.findIndex((h) => h.hotel_id === hotelId);
-  hotels[hotelIndex] = updatedHotel;
-
-  // Save updates to main data file and individual hotel file
-  saveMainData();
+  const updatedHotel = { ...hotel, ...updatedData };
   saveHotelData(updatedHotel);
 
   res.status(200).json(updatedHotel);
 });
 
 // Serve uploaded images statically
-// making accessable link of images
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Server setup
