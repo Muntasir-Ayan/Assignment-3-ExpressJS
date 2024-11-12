@@ -16,6 +16,7 @@ let hotels = require(dataFilePath);
 
 // Helper function to save main data array to data.json
 const saveMainData = () => {
+  // stringify(value, replacer, space) space gives a better view
   fs.writeFileSync(dataFilePath, JSON.stringify(hotels, null, 2));
 };
 
@@ -29,10 +30,19 @@ const saveHotelData = (hotel) => {
 const loadHotelData = (hotelId) => {
   const hotelFilePath = path.join(hotelDir, `${hotelId}.json`);
   if (fs.existsSync(hotelFilePath)) {
+    //fs.readFileSync(hotelFilePath, 'utf-8') return a string file and JSON.parse convert it into JSON format.
     return JSON.parse(fs.readFileSync(hotelFilePath, 'utf-8'));
   }
   return null;
 };
+
+// //see all hotels
+// app.get('/hotels', (req, res) => {
+
+//   res.status(200).json(dataFilePath);
+
+// });
+
 
 // Route: POST /hotel - Add a new hotel
 app.post('/hotel', (req, res) => {
@@ -57,6 +67,7 @@ app.post('/hotel', (req, res) => {
 });
 
 // Configure multer for image upload
+//multer.diskStorage(destination,filename) helps to difine the location
 const storage = multer.diskStorage({
   destination: uploadsDir,
   filename: (req, file, cb) => {
@@ -107,7 +118,8 @@ app.put('/hotel/:hotelId', (req, res) => {
   if (!hotel) return res.status(404).json({ error: 'Hotel not found' });
 
   // Update hotel data
-  const updatedHotel = { ...hotel, ...updatedData };
+   //creates two object existing hotel data and updated hotel data to merge
+  const updatedHotel = { ...hotel, ...updatedData }; 
   const hotelIndex = hotels.findIndex((h) => h.hotel_id === hotelId);
   hotels[hotelIndex] = updatedHotel;
 
@@ -119,6 +131,7 @@ app.put('/hotel/:hotelId', (req, res) => {
 });
 
 // Serve uploaded images statically
+// making accessable link of images
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Server setup
