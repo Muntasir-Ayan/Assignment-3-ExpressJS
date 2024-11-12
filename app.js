@@ -36,12 +36,25 @@ const loadHotelData = (hotelId) => {
   return null;
 };
 
-// //see all hotels
-// app.get('/hotels', (req, res) => {
+// See all hotels
+app.get('/hotels', (req, res) => {
+  // Read the data file asynchronously
+  fs.readFile(dataFilePath, 'utf8', (err, data) => {
+    if (err) {
+      // Handle error if file reading fails
+      return res.status(500).json({ message: 'Failed to read data file', error: err });
+    }
 
-//   res.status(200).json(dataFilePath);
-
-// });
+    try {
+      // Parse the JSON data and send it in the response
+      const hotels = JSON.parse(data);
+      res.status(200).json(hotels);
+    } catch (parseErr) {
+      // Handle error if JSON parsing fails
+      res.status(500).json({ message: 'Failed to parse data file', error: parseErr });
+    }
+  });
+});
 
 
 // Route: POST /hotel - Add a new hotel
