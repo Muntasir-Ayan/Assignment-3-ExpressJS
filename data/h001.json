@@ -3,7 +3,9 @@
   "slug": "seaside-haven",
   "images": [
     "https://example.com/hotel1/image1.jpg",
-    "https://example.com/hotel1/image2.jpg"
+    "https://example.com/hotel1/image2.jpg",
+    "/uploads/1731391213765_Screenshot from 2024-11-08 18-41-24.png",
+    "/uploads/1731391213767_Screenshot from 2024-11-08 18-38-55.png"
   ],
   "title": "Seaside Haven",
   "description": "A beautiful beachfront hotel with stunning views and modern amenities.",
