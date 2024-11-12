@@ -1,13 +1,15 @@
 {
   "hotel_id": "h001",
-  "slug": "seaside-haven",
+  "slug": "hotel-view",
   "images": [
     "https://example.com/hotel1/image1.jpg",
     "https://example.com/hotel1/image2.jpg",
     "/uploads/1731391213765_Screenshot from 2024-11-08 18-41-24.png",
-    "/uploads/1731391213767_Screenshot from 2024-11-08 18-38-55.png"
+    "/uploads/1731391213767_Screenshot from 2024-11-08 18-38-55.png",
+    "/uploads/1731412977287_Screenshot from 2024-11-08 18-38-08.png",
+    "/uploads/1731412977294_Mobile_part2.jpg"
   ],
-  "title": "Seaside Haven",
+  "title": "Hotel View",
   "description": "A beautiful beachfront hotel with stunning views and modern amenities.",
   "guest_count": 6,
   "bedroom_count": 3,
