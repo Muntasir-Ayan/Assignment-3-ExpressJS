@@ -2,8 +2,7 @@
   "hotel_id": "hotel-4",
   "slug": "lakeside-inn",
   "images": [
-    "https://example.com/hotel5/image1.jpg",
-    "https://example.com/hotel5/image2.jpg"
+    "/uploads/1731488296718_Screenshot from 2024-11-06 15-13-06.png"
   ],
   "title": "Lakeside Inn",
   "description": "A quaint inn by the lake, perfect for a peaceful getaway.",

@@ -89,5 +89,7 @@ module.exports = {
   addHotel,
   getHotelById,
   updateHotel,
-  uploadImages
+  uploadImages,
+  saveHotelData,     // Add this export
+  loadHotelData      // Add this export
 };
