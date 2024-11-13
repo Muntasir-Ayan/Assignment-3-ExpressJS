@@ -32,6 +32,7 @@ This project is a RESTful API built with Node.js and Express.js for managing hot
 │   └── hotelRoutes.js <br>
 ├── uploads              # Directory for uploaded images <br>
 ├── app.js               # Main application file <br>
+├── app.js               # Main server file <br>
 └── setupExpressApp.js   # Script for setting up the project structure <br>
 └── package.json <br>
 
