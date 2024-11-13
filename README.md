@@ -49,8 +49,8 @@ This project is a RESTful API built with Node.js and Express.js for managing hot
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/express-hotel-management-api.git
-   cd express-hotel-management-api
+   git clone https://github.com/Muntasir-Ayan/Assignment-3-ExpressJS.git
+   cd Assignment-3-ExpressJS.git
 2. **Install Dependencies:** 
    npm install
 
@@ -65,7 +65,7 @@ This project is a RESTful API built with Node.js and Express.js for managing hot
   -  GET /hotel/: Get hotel details by ID.
   -  PUT /hotel/: Update hotel information.
   -  POST /images/: Upload images for a hotel.
-  for more idea will get on "file.txt"
+  <br>more idea will get on "file.txt"
 
 ### Validation Rules
 - hotel_id: Required, unique for each hotel.
