@@ -50,7 +50,7 @@ This project is a RESTful API built with Node.js and Express.js for managing hot
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/Muntasir-Ayan/Assignment-3-ExpressJS.git
-   cd Assignment-3-ExpressJS.git
+   cd Assignment-3-ExpressJS
 2. **Install Dependencies:** 
    npm install
 
