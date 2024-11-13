@@ -6,18 +6,19 @@ Body (JSON):
   "hotel_id": "h004",
   "slug": "hotel-4",
   "title": "Hotel Four",
-  "images": []
+  "images": [],
+  "guest_count": 
 }
 
 
 2. Get a Hotel by ID or Slug
 
-    GET http://localhost:3000/hotel/h001
-    or http://localhost:3000/hotel/hotel-1
+    GET http://localhost:3000/hotel/<hotel_id>
+    or http://localhost:3000/hotel/<slug>
 
 3. Update a Hotel's Information by ID
 
-    PUT http://localhost:3000/hotel/h004
+    PUT http://localhost:3000/hotel/<hotel_id>
     Headers: Content-Type: application/json
     Body (JSON):
 
@@ -28,6 +29,6 @@ Body (JSON):
 
 4. Upload Multiple Images for a Specific Hotel
 
-    POST http://localhost:3000/images/h004
+    POST http://localhost:3000/images/<hotel_id>
     Headers: Content-Type: multipart/form-data
 
